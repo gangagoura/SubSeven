@@ -1,0 +1,19 @@
+String(Default: sub7server.pem) - (File Path, PEM File Format)
+
+Define the location of an SSL/TLS Certificate for network traffic encryption.
+
+If not specified or if empty, by default it searchs for a file called sub7server.pem in server installation directory (Program Files).
+
+sub7server.pem only exists if you:
+
+Check the option “Generate new SSL/TLS Certificate” during Server Setup (Additional Tasks Pane).
+Right click on SubSeven Service Controller icon on system tray and choose Local Server Certificate then Generate new certificate
+Right click on SubSeven Service Controller icon on system tray and choose Local Server Certificate then Import existing certificate (PEM)
+Manually generate and copy a valid certificate to server installation directory called sub7server.pem
+Notice that no generic certificate are used, you use one of the above option to use default certificate location.
+
+If you want, you can specify another location defined by the certificate configuration attribute.
+
+If you generate a certificate by yourself, the public and private key must be present in the same file in PEM format.
+
+Use strongest option possible to generate your certificate.
