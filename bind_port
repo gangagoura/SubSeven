@@ -1,0 +1,8 @@
+Word(Default: 2801) - 0 – 65535
+
+
+Define in which TCP port server will listen for new incomming connections.
+
+By default, it uses 2801, it is recommended to use a random port to bypass certain port scan mode for service discovery.
+
+A port above 49152 and bellow 65535 is a perfect choice.
