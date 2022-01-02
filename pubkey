@@ -1,0 +1,38 @@
+This is the default option used for authentication and is considered as very strong.
+
+Instead of using a password that is often considered as weak because chosen by the end-user, this option will use an SSL/TLS fingerprint to authentify viewer to the server.
+
+You can find the fingerprint of your certificate using the SubSeven Viewer itself on “Client Certificat” window and “Copy Fingerprint” or use OpenSSL command line tool:
+
+openssl x509 -in sub7viewer.pem -noout -fingerprint -sha512
+
+Server configuration only support SHA512 fingerprint.
+
+This will output something like:
+
+SHA512 Fingerprint=AA:BB:CC:DD:EE:FF:01:02:03:00:05:06:07:08:09:10:11:12:13:14:15:00:17:18:19:20:21:22:23:24:25:26
+The SHA512 Fingerprint= prefix must be removed.
+
+When you have your bunch of authorized keys ready, you can place them in an array of object called authorized_keys.
+
+Each object must specify at least the key / value fingerprint. You can optionally specify additional information about the fingerprint using prefixed keys with _.
+
+Example:
+
+…
+"authentication": {
+	"method": "pubkey",
+	"authorized_keys": [{
+			"_description": "Viewer #1 Fingerprint",
+			"fingerprint": "AA:BB:CC:...:22:23:24:25:26"
+		},
+		{
+			"_description": "Viewer #2 Fingerprint",
+			"fingerprint": "BB:DD:FF:...:22:23:24:25:26"
+		}
+	]
+}
+…
+Additional information fields are not yet supported but might be in a near future, until that day they will just be ignored by config parser.
+
+If no authorized_keys node is present, server will still wait for incomming connection, but session creation will be refused.
