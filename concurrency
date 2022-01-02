@@ -1,0 +1,9 @@
+Boolean(Default: True)
+
+Concurrency is a feature that allow multiple viewers to open control session at the same time.
+
+By default, it is set to True, if set to False only one viewer at a time can open a control session with server.
+
+If you expect to be the only user to use the server, you can safely set this option to False.
+
+This option doesn’t impact security of the server.
